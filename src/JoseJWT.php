@@ -1,9 +1,9 @@
 <?php
 
 
-namespace xbull\josejwt;
+namespace josejwt;
 
-use xbull\josejwt\lib\JWT;
+use josejwt\lib\JWT;
 
 /**
  *
@@ -51,7 +51,7 @@ use xbull\josejwt\lib\JWT;
  *  'name'=>'John Doe',
  *  'userId'=>136,
  *  'exp'=>time()+7200 ,
- *  'iss'=>'xbull',
+ *  'iss'=>'54354354',
  *  'iat'=>time()
  * ];
  * $jwtO = new JOSE_JWT($claim);
@@ -117,8 +117,8 @@ class JoseJWT
      * 解码IdToken
      *
      * @param string $IdToken
-     * @return \xbull\josejwt\lib\JWT
-     * @throws \xbull\josejwt\lib\exception\JoseExceptionInvalidFormat
+     * @return \josejwt\lib\JWT
+     * @throws \josejwt\lib\exception\JoseExceptionInvalidFormat
      */
     public function decodeIdToken(string $IdToken)
     {

@@ -1,7 +1,7 @@
 <?php
-namespace xbull\josejwt\lib\exception;
+namespace josejwt\lib\exception;
 
-use xbull\josejwt\lib\JoseException;
+use josejwt\lib\JoseException;
 
 class JoseExceptionUnexpectedAlgorithm extends JoseException
 {

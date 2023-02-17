@@ -1,5 +1,5 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
 class JoseException extends \Exception
 {

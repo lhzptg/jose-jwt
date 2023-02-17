@@ -1,10 +1,10 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
-use xbull\josejwt\lib\JWT;
-use xbull\josejwt\lib\JoseException;
-use xbull\josejwt\lib\exception\JoseExceptionVerificationFailed;
-use xbull\josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
+use josejwt\lib\JWT;
+use josejwt\lib\JoseException;
+use josejwt\lib\exception\JoseExceptionVerificationFailed;
+use josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
 use phpseclib\Crypt\RSA;
 
 class JWS extends JWT

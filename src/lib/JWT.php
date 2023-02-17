@@ -1,10 +1,10 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
-use xbull\josejwt\lib\JWE;
-use xbull\josejwt\lib\JWS;
-use xbull\josejwt\lib\URLSafeBase64;
-use xbull\josejwt\lib\exception\JoseExceptionInvalidFormat;
+use josejwt\lib\JWE;
+use josejwt\lib\JWS;
+use josejwt\lib\URLSafeBase64;
+use josejwt\lib\exception\JoseExceptionInvalidFormat;
 
 class JWT
 {

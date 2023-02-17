@@ -1,8 +1,8 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
-use xbull\josejwt\lib\JWT;
-use xbull\josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
+use josejwt\lib\JWT;
+use josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
 use phpseclib\Crypt\RSA;
 use phpseclib\Crypt\AES;
 use phpseclib\Crypt\Random;

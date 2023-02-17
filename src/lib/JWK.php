@@ -1,10 +1,10 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
-use xbull\josejwt\lib\JWT;
-use xbull\josejwt\lib\URLSafeBase64;
-use xbull\josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
-use xbull\josejwt\lib\exception\JoseExceptionInvalidFormat;
+use josejwt\lib\JWT;
+use josejwt\lib\URLSafeBase64;
+use josejwt\lib\exception\JoseExceptionUnexpectedAlgorithm;
+use josejwt\lib\exception\JoseExceptionInvalidFormat;
 use phpseclib\Crypt\RSA;
 use phpseclib\Math\BigInteger;
 use phpseclib\Crypt\Hash;

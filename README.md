@@ -16,7 +16,7 @@
 
 ### 使用实例：
 ```
-use josejwt\xbull\josejwt;
+use josejwt\josejwt;
 
 $JWT = new josejwt();
 $this->jwt = $JWT->verifyIdToken($idtoken, $publickey);

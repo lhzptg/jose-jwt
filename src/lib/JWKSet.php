@@ -1,7 +1,7 @@
 <?php
-namespace xbull\josejwt\lib;
+namespace josejwt\lib;
 
-use xbull\josejwt\lib\JWT;
+use josejwt\lib\JWT;
 class JWKSet
 {
     var $keys;
