@@ -1,7 +1,7 @@
 # JWT操作类库
 
 ### composer 引入方法
-修改composer.json文件，在autoload项，添加如下配置。路径"app/Library/xbull\josejwt"可以自由定义
+修改composer.json文件，在autoload项，添加如下配置。路径"app/Library/josejwt"可以自由定义
 ```
 {
     "name": "lhzptg/jose-jwt",
