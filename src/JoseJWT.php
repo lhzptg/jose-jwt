@@ -3,6 +3,7 @@
 
 namespace josejwt;
 
+use josejwt\lib\exception\JoseExceptionInvalidFormat;
 use josejwt\lib\JWT;
 
 /**
@@ -48,7 +49,7 @@ use josejwt\lib\JWT;
  *创建id_token
  * $claim = [
  *  'sub'=>'1234567890',
- *  'name'=>'John Doe',
+ *  'name'=>'fdsfdse',
  *  'userId'=>136,
  *  'exp'=>time()+7200 ,
  *  'iss'=>'54354354',
@@ -57,7 +58,7 @@ use josejwt\lib\JWT;
  * $jwtO = new JOSE_JWT($claim);
  * $jws = $jwtO->sign($key['privatekey'],'RS256');
  * eg:print_r($jws->toString());
- *eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjU0NTllNTc0MGU1MTQ3ZWZiMjU0ZDA2NjNjNjIxZTY4In0.eyJzdWIiOiIxMjM0NTY3O
+ * eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjU0NTllNTc0MGU1MTQ3ZWZiMjU0ZDA2NjNjNjIxZTY4In0.eyJzdWIiOiIxMjM0NTY3O
  * DkwIiwibmFtZSI6IkpvaG4gRG9lIiwidXNlcklkIjoxMzYsImV4cCI6MTUzMTU1NjYxMiwiaXNzIjoieGJ1bGwiLCJpYXQiOjE1MzE1NDk0MTJ9
  * .MWGWBn9QvqH2LRXqtIhrTmuI3cnZYd0ip1xDVdqxIrytPWXEmqVjTQ-Ihmne0UnqNqKtqbV99lqzoSXxM0z6Rk8rjkXNN9qgTLoefYUvSLbcRY
  * EGBqmf3ekoInP2aEBjD-yec333ap0H0koTrWFauhfdihG7CGrFVa8d-wgBr_3BQaBqIyqEE_NUCn4dvgKjcg00G1SBpWQyM1SB3HQn_vUnbpAwh
@@ -68,10 +69,7 @@ use josejwt\lib\JWT;
  * keypair生成后，可以一直使用，除非发现公钥泄露后，则才需要重新生成。将公钥转换为json格式添加到阿里云API网关。
  *
  *
- * 此库来自jsonwebkey，此类库依赖“phpseclib/phpseclib”
- * User: leeyuan
- * Date: 2018/12/12
- * Time: 17:22
+ * 此类库依赖“phpseclib/phpseclib”
  */
 class JoseJWT
 {
@@ -100,16 +98,13 @@ class JoseJWT
      *      "typ": "JWT",
      *      "alg": "HS256"
      *   }
-     * @param string $publicKey  公共密钥
+     * @param string $privateKey
      * @return string
-     * @author lizy
-     * @date 2018-7-14
      */
-    public function createIdToken( $claim=[], $header=[], $privateKey='')
+    public function createIdToken(array $claim = [], array $header = [], string $privateKey = ''): string
     {
-
         $jwtO = new JWT($claim, $header);
-        $jws = $jwtO->sign($privateKey,'RS256');
+        $jws = $jwtO->sign($privateKey, 'RS256');
         return $jws->toString();
     }
 
@@ -117,10 +112,10 @@ class JoseJWT
      * 解码IdToken
      *
      * @param string $IdToken
-     * @return \josejwt\lib\JWT
-     * @throws \josejwt\lib\exception\JoseExceptionInvalidFormat
+     * @return JWT
+     * @throws JoseExceptionInvalidFormat
      */
-    public function decodeIdToken(string $IdToken)
+    public function decodeIdToken(string $IdToken): JWT
     {
         return JWT::decode($IdToken);
     }
@@ -128,17 +123,25 @@ class JoseJWT
     /**
      * @param string $IdToken
      * @param string $publicKey
-     * @return mixed
+     * @return lib\JWS
+     * @throws JoseExceptionInvalidFormat
      */
-    public function verifyIdToken( $IdToken, $publicKey)
+    public function verifyIdToken(string $IdToken, string $publicKey): lib\JWS
     {
         $jwt = $this->decodeIdToken($IdToken);
         return $jwt->verify($publicKey);
     }
 
-    public function refreshIdToken( $jwt, $privateKey)
+    /**
+     * 刷新token
+     *
+     * @param $jwt
+     * @param $privateKey
+     * @return mixed
+     */
+    public function refreshIdToken($jwt, $privateKey)
     {
-        $jws = $jwt->sign($privateKey,'RS256');
+        $jws = $jwt->sign($privateKey, 'RS256');
         return $jws->toString();
     }
 
